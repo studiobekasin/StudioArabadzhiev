@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Studio Arabadzhiev - Професионален фотограф в Бургас. Дрон, Дива природа, Събития, Портрети.">
+    <meta name="keywords" content="фотограф Бургас, дрон фотография, дива природа, събития, Studio Arabadzhiev">
+    <meta name="author" content="Studio Arabadzhiev">
+    <title>Studio Arabadzhiev | Професионален Фотограф Бургас</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d4af37' stroke-width='2'%3E%3Cpath d='M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z'/%3E%3Ccircle cx='12' cy='13' r='4'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Outfit:wght@200;300;400;500&family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg-primary:#fafafa;--bg-secondary:#fff;--bg-tertiary:#f0f0f0;--text-primary:#1a1a1a;--text-secondary:#555;--text-muted:#888;--accent:#b8962f;--accent-light:#d4af37;--font-display:'Cormorant Garamond',Georgia,serif;--font-body:'Outfit',sans-serif}
+        [data-theme="dark"]{--bg-primary:#0a0a0a;--bg-secondary:#111;--bg-tertiary:#1a1a1a;--text-primary:#f5f5f5;--text-secondary:#a0a0a0;--text-muted:#666;--accent:#d4af37;--accent-light:#e8c547}
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-primary);line-height:1.6;overflow-x:hidden;transition:background-color 0.5s ease,color 0.5s ease}
+        
+        ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--bg-primary)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:4px}
+        ::selection{background:var(--accent);color:#fff}
+        
+        .top-controls{position:fixed;top:2rem;right:2rem;z-index:1001;display:flex;gap:0.75rem;align-items:center}
+        .control-btn{width:44px;height:44px;border-radius:50%;border:1px solid rgba(212,175,55,0.3);background:var(--bg-secondary);color:var(--text-primary);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform 0.3s,border-color 0.3s,background-color 0.5s ease,color 0.5s ease;backdrop-filter:blur(10px)}
+        .control-btn:hover{border-color:var(--accent);transform:scale(1.1)}
+        .control-btn svg{width:20px;height:20px}
+        .lang-toggle{display:flex;background:var(--bg-secondary);backdrop-filter:blur(10px);padding:4px;border-radius:25px;border:1px solid rgba(212,175,55,0.2);transition:background-color 0.5s ease}
+        .lang-btn{padding:8px 14px;border:none;background:transparent;color:var(--text-secondary);font-family:var(--font-body);font-size:0.85rem;cursor:pointer;border-radius:20px;transition:0.2s}
+        .lang-btn.active{background:var(--accent);color:#fff}
+        [data-lang-en],[data-lang-bg]{display:none}
+        html[lang="en"] [data-lang-en],html[lang="bg"] [data-lang-bg]{display:block}
+        html[lang="en"] span[data-lang-en],html[lang="bg"] span[data-lang-bg]{display:inline}
+        
+        .nav-trigger{position:fixed;top:2rem;left:2rem;z-index:1001;width:50px;height:50px;background:var(--bg-secondary);backdrop-filter:blur(10px);border:1px solid rgba(212,175,55,0.2);border-radius:50%;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;transition:0.4s}
+        .nav-trigger:hover{border-color:var(--accent);transform:scale(1.05)}
+        .nav-trigger span{width:20px;height:2px;background:var(--text-primary);transition:0.4s}
+        .nav-trigger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+        .nav-trigger.active span:nth-child(2){opacity:0}
+        .nav-trigger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+        .main-nav{position:fixed;top:0;left:-400px;width:400px;max-width:90vw;height:100vh;background:var(--bg-secondary);z-index:1000;transition:left 0.4s,background-color 0.5s ease;display:flex;flex-direction:column;padding:8rem 4rem;border-right:1px solid rgba(212,175,55,0.1);overflow-y:auto}
+        .main-nav.open{left:0}
+        .nav-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);opacity:0;visibility:hidden;transition:0.4s;z-index:999}
+        .nav-overlay.active{opacity:1;visibility:visible}
+        .nav-logo{font-family:var(--font-display);font-size:1.5rem;color:var(--accent);margin-bottom:4rem;letter-spacing:0.1em}
+        .nav-links{list-style:none;flex:1}
+        .nav-links li{margin-bottom:1rem}
+        .nav-links a{display:block;padding:1rem 0;color:var(--text-secondary);text-decoration:none;font-size:1.1rem;transition:0.2s}
+        .nav-links a:hover{color:var(--text-primary);padding-left:1rem}
+        .nav-social{display:flex;gap:1rem;padding-top:2rem;border-top:1px solid rgba(212,175,55,0.1)}
+        .nav-social a{width:40px;height:40px;border:1px solid rgba(212,175,55,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);transition:0.2s}
+        .nav-social a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+        
+        .hero{position:relative;height:100vh;width:100%;overflow:hidden}
+        .slideshow{position:absolute;top:0;left:0;width:100%;height:100%}
+        .slide{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1.8s ease-in-out}
+        .slide.active{opacity:1}
+        .slide img{width:100%;height:100%;object-fit:cover;filter:brightness(0.7);animation:slowZoom 25s ease-in-out infinite alternate}
+        [data-theme="dark"] .slide img{filter:brightness(0.55)}
+        @keyframes slowZoom{0%{transform:scale(1)}100%{transform:scale(1.08)}}
+        .hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(255,255,255,0.15) 0%,transparent 40%,rgba(255,255,255,0.6) 100%);z-index:1;transition:background-color 0.5s ease}
+        [data-theme="dark"] .hero-overlay{background:linear-gradient(180deg,rgba(10,10,10,0.3) 0%,transparent 40%,rgba(10,10,10,0.75) 100%)}
+        .hero-content{position:absolute;bottom:15%;left:50%;transform:translateX(-50%);text-align:center;z-index:2;width:90%;max-width:800px}
+        .hero-title{font-family:'Sedgwick Ave Display',cursive;font-size:clamp(2.5rem,8vw,5rem);font-weight:400;letter-spacing:0.1em;margin-bottom:1rem;text-transform:none;animation:fadeInUp 1s;text-shadow:1px 1px 3px rgba(0,0,0,0.15)}
+        .hero-subtitle{font-size:clamp(0.9rem,2vw,1.1rem);font-weight:200;letter-spacing:0.3em;color:#1a1a1a;text-transform:uppercase;animation:fadeInUp 1s 0.2s backwards}
+        [data-theme="dark"] .hero-subtitle{color:var(--accent)}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        .slide-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:50px;height:50px;background:rgba(255,255,255,0.15);backdrop-filter:blur(5px);border:1px solid rgba(212,175,55,0.3);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text-primary);font-size:1.5rem;transition:0.2s}
+        [data-theme="dark"] .slide-nav{background:rgba(0,0,0,0.3);color:#fff}
+        .slide-nav:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+        .slide-nav.prev{left:20px}
+        .slide-nav.next{right:20px}
+        .slide-indicators{position:absolute;bottom:5%;left:50%;transform:translateX(-50%);display:flex;gap:1rem;z-index:2}
+        .slide-indicator{width:40px;height:3px;background:rgba(0,0,0,0.2);cursor:pointer;transition:0.4s}
+        [data-theme="dark"] .slide-indicator{background:rgba(255,255,255,0.3)}
+        .slide-indicator.active{background:var(--accent)}
+        .scroll-indicator{position:absolute;bottom:10%;left:50%;transform:translateX(-50%);z-index:2;animation:bounce 2s infinite}
+        .scroll-indicator svg{width:30px;height:30px;stroke:var(--accent)}
+        @keyframes bounce{0%,20%,50%,80%,100%{transform:translateX(-50%) translateY(0)}40%{transform:translateX(-50%) translateY(-10px)}}
+        
+        section{padding:8rem 2rem}
+        .container{max-width:1400px;margin:0 auto;padding:0 2rem}
+        .section-header{text-align:center;margin-bottom:4rem}
+        .section-title{font-family:var(--font-display);font-size:clamp(2rem,5vw,3rem);font-weight:300;letter-spacing:0.15em;margin-bottom:1rem;text-transform:uppercase}
+        .section-line{width:60px;height:1px;background:var(--accent);margin:0 auto 1rem}
+        
+        #about{background:var(--bg-secondary);transition:background-color 0.5s ease}
+        .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+        .about-image{position:relative}
+        .about-image img{width:100%;height:auto;filter:grayscale(20%);transition:0.4s}
+        .about-image:hover img{filter:grayscale(0%)}
+        .about-image::before{content:'';position:absolute;top:-20px;left:-20px;width:100px;height:100px;border-left:2px solid var(--accent);border-top:2px solid var(--accent)}
+        .about-image::after{content:'';position:absolute;bottom:-20px;right:-20px;width:100px;height:100px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent)}
+        .about-content h3{font-family:var(--font-display);font-size:1.8rem;color:var(--accent);margin-bottom:2rem}
+        .about-content p{color:var(--text-secondary);margin-bottom:1rem;line-height:1.8}
+        
+        .portfolio-categories{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;margin-bottom:4rem}
+        .category-btn{padding:0.75rem 1.5rem;background:transparent;border:1px solid rgba(212,175,55,0.3);color:var(--text-secondary);font-family:var(--font-body);font-size:0.9rem;letter-spacing:0.1em;cursor:pointer;transition:0.2s;text-transform:uppercase}
+        .category-btn:hover,.category-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+        .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:2rem}
+        .portfolio-item{position:relative;aspect-ratio:4/3;overflow:hidden;cursor:pointer}
+        .portfolio-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s}
+        .portfolio-item:hover img{transform:scale(1.1)}
+        .portfolio-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,transparent 0%,rgba(10,10,10,0.9) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;opacity:0;transition:0.4s}
+        .portfolio-item:hover .portfolio-overlay{opacity:1}
+        .portfolio-overlay h4{font-family:var(--font-display);font-size:1.3rem;margin-bottom:0.5rem;transform:translateY(20px);transition:0.4s;color:#fff}
+        .portfolio-item:hover .portfolio-overlay h4{transform:translateY(0)}
+        .portfolio-overlay span{color:var(--accent);font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;transform:translateY(20px);transition:0.4s 0.1s}
+        .portfolio-item:hover .portfolio-overlay span{transform:translateY(0)}
+        
+        #pricing{background:var(--bg-secondary);transition:background-color 0.5s ease}
+        .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+        .pricing-card{background:var(--bg-tertiary);border:1px solid rgba(212,175,55,0.1);padding:2.5rem 2rem;text-align:center;transition:transform 0.4s,border-color 0.4s,background-color 0.5s ease;position:relative;overflow:hidden}
+        .pricing-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,transparent,var(--accent),transparent);transform:translateX(-100%);transition:0.4s}
+        .pricing-card:hover::before{transform:translateX(0)}
+        .pricing-card:hover{border-color:var(--accent);transform:translateY(-5px)}
+        .pricing-card.featured{border-color:var(--accent)}
+        .pricing-card.featured::before{transform:translateX(0)}
+        .pricing-icon{margin-bottom:1rem;display:flex;justify-content:center;align-items:center}
+        .pricing-icon svg{width:40px;height:40px;fill:var(--accent)}
+        .pricing-card h3{font-family:var(--font-display);font-size:1.5rem;margin-bottom:1rem;letter-spacing:0.1em}
+        .pricing-card .price{font-family:var(--font-display);font-size:1.8rem;color:var(--accent);margin-bottom:0.25rem}
+        .pricing-card .price-secondary{font-size:0.95rem;color:var(--text-muted);margin-bottom:1.5rem}
+        .pricing-features{list-style:none;margin-bottom:1.5rem}
+        .pricing-features li{padding:0.6rem 0;border-bottom:1px solid rgba(128,128,128,0.1);color:var(--text-secondary);font-size:0.95rem}
+        .pricing-features li:last-child{border-bottom:none}
+        .pricing-notice{background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:6px;padding:0.75rem;margin-bottom:1.5rem;font-size:0.85rem;color:var(--accent)}
+        .pricing-btn{display:inline-block;padding:1rem 2rem;background:transparent;border:1px solid var(--accent);color:var(--accent);text-decoration:none;font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;transition:0.2s}
+        .pricing-btn:hover{background:var(--accent);color:#fff}
+        
+        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+        .contact-info h3{font-family:var(--font-display);font-size:1.5rem;color:var(--accent);margin-bottom:2rem}
+        .contact-info p{color:var(--text-secondary);margin-bottom:2rem;line-height:1.8}
+        .contact-details{list-style:none}
+        .contact-details li{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;color:var(--text-secondary)}
+        .contact-details svg{width:20px;height:20px;stroke:var(--accent)}
+        .contact-form{display:flex;flex-direction:column;gap:1rem}
+        .contact-form input,.contact-form textarea{width:100%;padding:1rem;background:var(--bg-secondary);border:1px solid rgba(212,175,55,0.1);color:var(--text-primary);font-family:var(--font-body);font-size:1rem;transition:border-color 0.2s,background-color 0.5s ease,color 0.5s ease}
+        .contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--accent)}
+        .contact-form textarea{min-height:150px;resize:vertical}
+        .contact-form button{align-self:flex-start;padding:1rem 2.5rem;background:var(--accent);border:none;color:#fff;font-family:var(--font-body);font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:0.2s}
+        .contact-form button:hover{background:var(--accent-light);transform:translateY(-2px)}
+        .contact-form button:disabled{opacity:0.7;cursor:not-allowed;transform:none}
+        .form-thanks{display:none;text-align:center;padding:3rem 2rem;background:var(--bg-tertiary);border:1px solid rgba(212,175,55,0.2);border-radius:8px}
+        .form-thanks.active{display:block;animation:fadeInUp 0.5s ease}
+        .form-thanks .thanks-icon{margin-bottom:1rem;display:flex;justify-content:center}
+        .form-thanks h3{font-family:var(--font-display);font-size:1.8rem;color:var(--accent);margin-bottom:1rem}
+        .form-thanks p{color:var(--text-secondary);margin-bottom:1.5rem}
+        .form-thanks button{padding:0.75rem 1.5rem;background:transparent;border:1px solid var(--accent);color:var(--accent);font-family:var(--font-body);cursor:pointer;transition:0.2s}
+        .form-thanks button:hover{background:var(--accent);color:#fff}
+        
+        footer{background:var(--bg-secondary);padding:4rem 2rem;border-top:1px solid rgba(212,175,55,0.1);transition:background-color 0.5s ease}
+        .footer-content{max-width:1400px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:2rem}
+        .footer-logo{font-family:var(--font-display);font-size:1.5rem;color:var(--accent);letter-spacing:0.1em}
+        .footer-links{display:flex;gap:2rem;list-style:none}
+        .footer-links a{color:var(--text-secondary);text-decoration:none;font-size:0.9rem;transition:0.2s}
+        .footer-links a:hover{color:var(--accent)}
+        .footer-social{display:flex;gap:1rem}
+        .footer-social a{width:40px;height:40px;border:1px solid rgba(212,175,55,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);transition:0.2s}
+        .footer-social a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
+        .footer-bottom{max-width:1400px;margin:2rem auto 0;padding-top:2rem;border-top:1px solid rgba(128,128,128,0.1);text-align:center;color:var(--text-muted);font-size:0.85rem}
+        .footer-credit{margin-top:1rem;font-size:0.8rem}
+        .footer-credit a{color:var(--accent);text-decoration:none}
+        .footer-credit a:hover{text-decoration:underline}
+        
+        .lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:2000;align-items:center;justify-content:center;padding:2rem}
+        .lightbox.active{display:flex}
+        .lightbox img{max-width:90%;max-height:90vh;object-fit:contain}
+        .lightbox-close{position:absolute;top:2rem;right:2rem;width:50px;height:50px;background:none;border:1px solid rgba(212,175,55,0.3);color:#fff;font-size:2rem;cursor:pointer;transition:0.2s}
+        .lightbox-close:hover{border-color:var(--accent);color:var(--accent)}
+        
+        .fade-in{opacity:0;transform:translateY(30px);transition:opacity 0.8s,transform 0.8s}
+        .fade-in.visible{opacity:1;transform:translateY(0)}
+        
+        @media(max-width:1024px){.about-grid,.contact-grid{grid-template-columns:1fr}.about-image{order:-1;max-width:500px;margin:0 auto}}
+        @media(max-width:768px){section{padding:4rem 1rem}.main-nav{width:100%;left:-100%}.top-controls{top:auto;bottom:2rem;right:2rem}.portfolio-grid{grid-template-columns:1fr}.portfolio-categories{flex-direction:column;align-items:stretch}.category-btn{width:100%;text-align:center}.footer-content{flex-direction:column;text-align:center}.slide-nav{display:none}}
+    </style>
+</head>
+<body data-theme="light">
+    
+    <div class="top-controls">
+        <button class="control-btn" id="theme-toggle" onclick="toggleTheme()">
+            <svg id="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg id="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <div class="lang-toggle">
+            <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn active" data-lang="bg" onclick="setLanguage('bg')">БГ</button>
+        </div>
+    </div>
+
+    <button class="nav-trigger" onclick="toggleNav()"><span></span><span></span><span></span></button>
+    <div class="nav-overlay" onclick="toggleNav()"></div>
+
+    <nav class="main-nav">
+        <div class="nav-logo">Studio Arabadzhiev</div>
+        <ul class="nav-links">
+            <li><a href="#home" onclick="toggleNav()"><span data-lang-en>Home</span><span data-lang-bg>Начало</span></a></li>
+            <li><a href="#about" onclick="toggleNav()"><span data-lang-en>About</span><span data-lang-bg>За мен</span></a></li>
+            <li><a href="#portfolio" onclick="toggleNav()"><span data-lang-en>Portfolio</span><span data-lang-bg>Портфолио</span></a></li>
+            <li><a href="#pricing" onclick="toggleNav()"><span data-lang-en>Pricing</span><span data-lang-bg>Цени</span></a></li>
+            <li><a href="#contact" onclick="toggleNav()"><span data-lang-en>Contact</span><span data-lang-bg>Контакти</span></a></li>
+        </ul>
+        <div class="nav-social">
+            <a href="https://www.instagram.com/studio.arabadzhiev" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="https://www.facebook.com/StudioArabadzhiev/" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://www.tiktok.com/@studio.arabadzhiev" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="slideshow">
+            <!-- ============================================================
+                 SLIDESHOW IMAGES - Add or remove slides here.
+                 Each slide is a <div class="slide"> with an <img> inside.
+                 The first slide should have class="slide active".
+                 Example: <div class="slide"><img src="YOUR_IMAGE_URL" alt="description"></div>
+                 ============================================================ -->
+            <div class="slide active"><img src="https://live.staticflickr.com/65535/55088414772_d5bfbcd448_b.jpg" alt="Drone aerial"></div>
+            <div class="slide"><img src="https://live.staticflickr.com/65535/46851254025_6486f27e49_b.jpg" alt="Wildlife"></div>
+            <div class="slide"><img src="https://live.staticflickr.com/65535/55089565149_b7c1ea5e3e_b.jpg" alt="Drone landscape"></div>
+            <div class="slide"><img src="https://live.staticflickr.com/65535/47625048481_805a9e2cf4_b.jpg" alt="Wildlife"></div>
+            <div class="slide"><img src="https://live.staticflickr.com/65535/55115424376_8d4bc37481_b.jpg" alt="Events"></div>
+            <div class="slide"><img src="https://live.staticflickr.com/65535/55089507878_46f1054d3d_b.jpg" alt="Drone"></div>
+            <div class="slide"><img src="https://live.staticflickr.com/65535/51092293502_e84d7bb237_b.jpg" alt="Wildlife"></div>
+            <!-- Additional event shots -->
+            <div class="slide"><img src="https://live.staticflickr.com/65535/55115815100_e80966d357_b.jpg" alt="Event celebration"></div>
+            <div class="slide"><img src="https://live.staticflickr.com/65535/55115642248_ea016308ef_b.jpg" alt="Event together"></div>
+            <div class="slide"><img src="https://live.staticflickr.com/65535/55114564042_aa9b18b711_b.jpg" alt="Event joy"></div>
+            <div class="slide"><img src="https://live.staticflickr.com/65535/55115704794_c60d57502b_b.jpg" alt="Event memories"></div>
+            <!-- Additional drone shots -->
+            <div class="slide"><img src="https://live.staticflickr.com/65535/55089507733_22b0162824_b.jpg" alt="Drone birds eye"></div>
+            <div class="slide"><img src="https://live.staticflickr.com/65535/55089507923_c0dcccdc12_b.jpg" alt="Drone horizon"></div>
+            <!-- END SLIDESHOW IMAGES -->
+        </div>
+        <div class="hero-overlay"></div>
+        <button class="slide-nav prev" onclick="prevSlide()">‹</button>
+        <button class="slide-nav next" onclick="nextSlide()">›</button>
+        <div class="hero-content">
+            <h1 class="hero-title">Studio Arabadzhiev</h1>
+            <p class="hero-subtitle"><span data-lang-en>Professional Photography</span><span data-lang-bg>Професионална Фотография</span></p>
+        </div>
+        <div class="slide-indicators" id="slide-indicators"></div>
+        <div class="scroll-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="section-header fade-in"><h2 class="section-title"><span data-lang-en>About Me</span><span data-lang-bg>За Мен</span></h2><div class="section-line"></div></div>
+            <div class="about-grid">
+                <div class="about-image fade-in"><img src="https://live.staticflickr.com/65535/55115424376_8d4bc37481_b.jpg" alt="Studio Arabadzhiev"></div>
+                <div class="about-content fade-in">
+                    <h3><span data-lang-en>Capturing Moments</span><span data-lang-bg>Улавям моменти</span></h3>
+                    <p data-lang-en>Based in Burgas, Bulgaria, I specialize in capturing the beauty of our world from unique perspectives. From breathtaking drone shots to intimate wildlife photography, every image tells a story.</p>
+                    <p data-lang-bg>Базиран в Бургас, България, аз се специализирам в улавянето на красотата на нашия свят от уникални перспективи. От спиращи дъха дрон снимки до фотография на дивата природа, всяка снимка разказва история.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-header fade-in"><h2 class="section-title"><span data-lang-en>Portfolio</span><span data-lang-bg>Портфолио</span></h2><div class="section-line"></div></div>
+            <div class="portfolio-categories fade-in">
+                <button class="category-btn active" data-filter="all" onclick="filterPortfolio('all')"><span data-lang-en>All</span><span data-lang-bg>Всички</span></button>
+                <button class="category-btn" data-filter="drone" onclick="filterPortfolio('drone')"><span data-lang-en>Drone</span><span data-lang-bg>Дрон</span></button>
+                <button class="category-btn" data-filter="wildlife" onclick="filterPortfolio('wildlife')"><span data-lang-en>Wildlife</span><span data-lang-bg>Дива природа</span></button>
+                <button class="category-btn" data-filter="events" onclick="filterPortfolio('events')"><span data-lang-en>Events</span><span data-lang-bg>Събития</span></button>
+            </div>
+            <div class="portfolio-grid" id="portfolio-grid">
+                <!-- ============================================================
+                     PORTFOLIO IMAGES - Add or remove portfolio items here.
+                     Each item needs: data-category="drone|wildlife|events"
+                     Template:
+                     <div class="portfolio-item fade-in" data-category="YOUR_CATEGORY" onclick="openLightbox(this)">
+                         <img src="YOUR_IMAGE_URL" alt="description">
+                         <div class="portfolio-overlay">
+                             <h4><span data-lang-en>English Title</span><span data-lang-bg>Заглавие на БГ</span></h4>
+                             <span>Category Label</span>
+                         </div>
+                     </div>
+                     ============================================================ -->
+                <!-- DRONE PHOTOS -->
+                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55088414772_d5bfbcd448_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Aerial View</span><span data-lang-bg>Въздушен изглед</span></h4><span>Drone</span></div></div>
+                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55089565149_b7c1ea5e3e_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Landscape</span><span data-lang-bg>Пейзаж</span></h4><span>Drone</span></div></div>
+                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55089507878_46f1054d3d_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>From Above</span><span data-lang-bg>Отгоре</span></h4><span>Drone</span></div></div>
+                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55089507733_22b0162824_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Bird's Eye</span><span data-lang-bg>Птичи поглед</span></h4><span>Drone</span></div></div>
+                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55089507923_c0dcccdc12_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Horizon</span><span data-lang-bg>Хоризонт</span></h4><span>Drone</span></div></div>
+                <!-- END DRONE PHOTOS -->
+
+                <!-- WILDLIFE PHOTOS -->
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/46851254025_6486f27e49_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Nature's Beauty</span><span data-lang-bg>Красотата на природата</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/47625048481_805a9e2cf4_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Wild Encounter</span><span data-lang-bg>Дива среща</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/48925234423_bc6355b7f3_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Forest Life</span><span data-lang-bg>Горски живот</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/53818619109_1a5c4598d4_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Wings</span><span data-lang-bg>Криле</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/53818530458_5e433481dc_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>In the Wild</span><span data-lang-bg>В дивото</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/53818720960_871182abc7_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Natural Habitat</span><span data-lang-bg>Естествена среда</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/52806333761_b479d8e632_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Feathers</span><span data-lang-bg>Пера</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/52806590709_785bb8da41_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Freedom</span><span data-lang-bg>Свобода</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/51092293502_e84d7bb237_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Wild Spirit</span><span data-lang-bg>Див дух</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/52806736355_c3b392e892_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Nature's Child</span><span data-lang-bg>Дете на природата</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115457136_05a5e306eb_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Eyes of Wild</span><span data-lang-bg>Очите на дивото</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115664778_b2b15315c6_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Silent Hunter</span><span data-lang-bg>Тих ловец</span></h4><span>Wildlife</span></div></div>
+                <!-- END WILDLIFE PHOTOS -->
+
+                <!-- EVENT PHOTOS -->
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115424376_8d4bc37481_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Special Moments</span><span data-lang-bg>Специални моменти</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115815100_e80966d357_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Celebration</span><span data-lang-bg>Празненство</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115642248_ea016308ef_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Together</span><span data-lang-bg>Заедно</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55114564042_aa9b18b711_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Joy</span><span data-lang-bg>Радост</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115704794_c60d57502b_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Memories</span><span data-lang-bg>Спомени</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115642393_2201245fe7_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Party Time</span><span data-lang-bg>Време за парти</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115439266_d258490f0e_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Gathering</span><span data-lang-bg>Събиране</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115642623_ae73c4b225_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Happy Day</span><span data-lang-bg>Щастлив ден</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55114588167_50535b6f7e_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Unforgettable</span><span data-lang-bg>Незабравимо</span></h4><span>Events</span></div></div>
+                <!-- END EVENT PHOTOS -->
+                <!-- END PORTFOLIO IMAGES -->
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <div class="container">
+            <div class="section-header fade-in"><h2 class="section-title"><span data-lang-en>Pricing</span><span data-lang-bg>Цени</span></h2><div class="section-line"></div></div>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <div class="pricing-icon"><svg viewBox="0 0 512 512"><path d="M296.81,161.734c2.532-1.052,5.042-2.166,7.529-3.341c2.334-1.098,4.637-2.257,6.888-3.524c-21.114-32.128,15.119-56.904,43.724-60.497c29.016-3.623,68.628,5.714,82.732,34.242c14.782,29.901-16.751,51.435-42.678,55.744c-12.556,2.082-25.562,1.587-37.964-1.182c-4.654-1.037-5.073-1.32-8.04,2.036c-3.281,3.722-6.24,7.673-8.994,11.793c37.384,12.578,96.699,9.832,119.102-28.185c14.386-24.409,0.512-51.237-20.138-66.607c-20.931-15.553-47.796-22.686-73.648-22.686c-28.811,0-64.54,9.498-78.804,37.148c-7.238,14.036-5.675,30.328,2.357,43.631C291.501,164.725,292.409,163.55,296.81,161.734z"/><path d="M93.855,199.812c24.714,6.873,51.686,5.447,75.92-2.662c-2.296-3.493-9.306-15.813-13.592-14.608c-5.18,1.465-10.511,2.479-15.859,3.067c-12.494,1.38-25.325,0.533-37.4-3.074c-12.464-3.837-24.775-10.71-31.534-22.273c-7.544-12.99-4.538-27.98,4.554-39.33c18.52-22.51,52.442-30.1,80.276-25.668c27.705,4.409,60.55,28.589,41.557,59.292c3.585,1.945,17.079,10.397,20.359,8.581c2.701-1.495,4.638-8.314,5.614-10.923c5.889-15.515,2.265-32.198-8.36-44.676c-17.285-20.306-46.629-27.614-72.343-27.552c-22.853,0-46.278,5.614-65.913,17.491c-19.68,11.907-37.995,33.181-33.288,57.789C48.438,179.294,71.963,193.726,93.855,199.812z"/><path d="M371.587,338.29c7.36,14.706,26.018,21.785,41.542,16.125c24.585-8.97,14.577-37.072-5.332-44.356c-10.839-3.257-20.893-5.172-31.106-11.16c-19.566-11.457-36.774-28.269-49.262-47.156c-5.476-8.284-11.678-18.551-11.373-28.864c0.298-10.16,5.408-20.13,10.74-28.544c11.587-18.292,29.733-35.699,51.374-40.772c7.865-1.632,18.513-3.829,18.841-14.21c0.603-19.161-31.732-21.8-42.952-12.845c-2.342,1.861-3.371,3.509-4.447,6.079c-2.22,5.302-4.096,9.566-8.414,13.876c-15.866,15.805-39.39,25.21-60.641,30.977c-22.694,6.148-43.098,3.57-65.082-4.317c-18.422-6.614-45.462-17.461-54.341-36.538c-0.9-1.93-1.037-4.035-2.014-5.934c-3.906-6.996-12.99-9.421-20.451-9.421c-10.244-0.03-29.108,6.499-25.919,20.13c1.793,7.658,9.146,10.405,15.919,11.724c16.851,3.296,31.077,13.395,42.526,25.928c13.387,14.652,27.849,36.248,19.832,56.644c-8.047,20.466-24.73,38.46-41.64,52.046c-12.815,10.298-26.767,17.902-42.785,21.625c-14.532,3.379-30.832,17.788-22.701,34.044c4.89,9.778,16.69,13.623,26.98,12.799c7.994-0.64,23.868-5.789,26.439-14.806c2.8-9.847,9.61-18.071,16.995-24.92c16.704-15.485,37.91-26.508,59.108-34.44c21.496-8.048,41.939-11.701,64.418-5.927c22.472,5.774,44.471,15.828,63.548,29.032C354.333,314.08,364.562,324.255,371.587,338.29z"/><path d="M499.812,304.979c-22.77-37.453-68.056-58.178-111.009-58.178c-14.829,0-29.772,2.418-43.655,7.696c3.982,5.187,8.376,10.054,13.029,14.654c3.707,3.662,5.263,1.991,10.015,0.778c7.566-1.976,15.401-2.876,23.212-2.876c20.504,0,41.182,6.278,58.101,17.888c17.964,12.258,32.434,31.724,33.792,53.99c1.244,20.488-9.45,39.314-26.301,50.543c-35.882,23.913-88.705,14.752-118.416-14.982c-15.08-15.088-24.554-36.614-19.955-58.078c0.503-2.358,1.167-4.684,1.976-6.95c1.213-3.41-0.206-2.96-3.067-4.569c-3.951-2.212-7.986-4.272-12.082-6.202c-2.228-1.045-6.743-3.928-8.497-2.952c-0.474,0.267-0.672,1.594-1.038,2.029c-20.947,44.898,9.695,92.382,48.91,114.418c37.652,21.069,87.248,25.157,125.685,3.685C511.064,393.211,524.038,344.842,499.812,304.979z"/><path d="M191.759,305.269c-3.059,1.701-1.396,2.716-0.251,5.774c1.242,3.31,2.113,6.743,2.67,10.236c3.493,22.022-7.186,43.571-23.189,58.201c-30.954,28.299-84.006,35.935-118.743,10.008C35.15,376.734,25.89,355.896,29.49,334.675c3.692-21.763,19.177-39.734,37.605-50.94c17.941-10.908,39.421-16.133,60.36-14.676c5.385,0.397,10.74,1.205,15.98,2.517c4.523,1.13,3.882,0.931,7.147-1.243c5.271-3.516,9.786-10.153,13.677-15.058c-13.15-4.584-27.018-6.788-40.939-6.788c-43.503,0-89.407,21.152-111.917,59.506c-24.836,42.311-7.468,92.343,36.202,113.152c40.489,19.298,91.07,12.922,128.004-11.427c37.102-24.448,62.115-72.922,38.064-115.121C206.153,297.686,198.861,301.318,191.759,305.269z"/></svg></div>
+                    <h3><span data-lang-en>Drone</span><span data-lang-bg>Дрон</span></h3>
+                    <div class="price">€60</div>
+                    <div class="price-secondary">~120 лв.</div>
+                    <ul class="pricing-features">
+                        <li><span data-lang-en>2 hours - photos & videos</span><span data-lang-bg>2 часа - снимки и видео</span></li>
+                        <li><span data-lang-en>20+ edited photos</span><span data-lang-bg>20+ обработени снимки</span></li>
+                        <li><span data-lang-en>4K video included</span><span data-lang-bg>4K видео включено</span></li>
+                    </ul>
+                    <a href="#contact" class="pricing-btn"><span data-lang-en>Contact</span><span data-lang-bg>Контакт</span></a>
+                </div>
+                <div class="pricing-card featured fade-in">
+                    <div class="pricing-icon"><svg viewBox="0 0 579.365 579.365"><path d="M56.071,267.187c0.71,1.342,1.342,2.725,2.15,4.439c0.302,0.641,0.053,0.873-0.563,0.522c-6.202-3.545-11.942-6.826-17.654-10.094c-0.616-0.351-1.514-0.225-2.007,0.286c-0.167,0.171-0.331,0.343-0.498,0.514c-0.494,0.51-0.588,1.407-0.216,2.011c2.77,4.517,5.263,9.27,8.609,13.309c3.227,3.892,7.246,7.34,11.469,10.155c13.011,8.671,26.01,17.427,39.596,25.125c5.578,3.158,12.624,3.746,19.025,5.419c48.751,12.754,36.483,7.475,68.458,38.535c2.705,2.628,4.623,6.643,5.516,10.347c0.612,2.538-0.648,5.949-2.011,8.462c-6.936,12.795-18.335,21.444-29.09,30.69c-0.767,0.66-0.779,2.317-0.947,3.537c-1.183,8.629-2.746,17.238-3.301,25.908c-0.318,4.989,0.331,10.298,1.792,15.079c1.97,6.438,4.99,12.579,7.85,18.711c3.032,6.495,6.357,8.218,13.717,7.014c0.698-0.114,1.232-0.8,1.22-1.51c-0.184-13.574,8.38-22.538,17.511-31.53c9.915-9.763,21.506-10.253,33.746-8.434c0.702,0.106,1.461,0.739,1.677,1.412c4.961,15.431,1.134,30.951,0.763,46.406c-0.196,8.103-0.571,16.246-0.033,24.316c0.771,11.51-2.562,21.481-9.515,30.421c-3.696,4.749-7.238,5.271-10.963,0.607c-3.244-4.063-5.594-8.955-7.723-13.758c-2.419-5.455-5.451-6.821-8.907-3.537c-0.514,0.489-0.343,1.13,0.302,1.424c3.774,1.738,5.08,4.112,2.012,8.658c-0.918,1.358-0.029,5.201,1.35,6.609c3.337,3.395,7.299,6.177,11.416,9.408c0.555,0.437,0.44,0.914-0.257,1.028c-9.898,1.636-18.356-1.343-26.345-6.324c-7.964-4.965-15.178-2.016-16.614,6.41c-0.118,0.697,0.331,0.983,0.942,0.628c2.089-1.212,4.288-2.488,6.5-3.773c0.612-0.355,1.481-0.453,1.942-0.221c0.461,0.236,0.669,0.979,0.539,1.673c-0.93,4.994,2.13,5.997,6.218,6.557c3.774,0.514,7.405,2.011,11.159,2.786c3.166,0.657,6.397,1.008,9.87,2.351c0.661,0.253,0.636,0.661-0.041,0.864c-2.15,0.657-4.292,1.326-6.455,1.951c-5.308,1.538-10.788,2.644-15.892,4.684c-4.251,1.701-7.193,4.839-6.858,9.723c0.049,0.705,0.563,1.681,1.065,2.183c0.302,0.302,0.604,0.604,0.906,0.905c0.502,0.502,0.983,0.339,1.073-0.367c0.478-3.831,0.784-5.643,7.781-4.798c8.531,1.032,18.756-3.659,26.708-8.421c8.332-4.985,15.875-7.095,25.092-4.41c4.684,1.362,9.6,1.966,14.439,2.737c1.191,0.188,2.991,0.151,3.672-0.575c5.814-6.173,9.833-3.333,13.558,2.489c0.383,0.595,0.853,0.546,1.003-0.147c1.298-5.924-2.081-9.004-6.148-10.453c-4.011-1.428-9.053-2.183-13.019-1.053c-7.344,2.094-12.436-0.22-16.712-4.402c-0.506-0.493-0.587-1.399-0.208-1.999c9.319-14.602,18.393-28.816,27.462-43.023c0.384-0.596,0.372-1.411-0.028-1.815c-0.396-0.404-0.192-0.502,0.453-0.212c1.191,0.534,2.485,1.113,4.178,1.872c0.648,0.29,1.154-0.049,1.138-0.759c-0.082-3.121-0.155-5.838-0.229-8.653c-0.021-0.71,0.424-0.938,0.991-0.514c1.318,0.991,2.562,1.925,3.791,2.852c0.567,0.424,1.587,0.652,2.281,0.51c0.024-0.004,0.049-0.012,0.073-0.017c0.694-0.146,1.183-0.836,1.098-1.538c-0.481-3.859-0.963-7.723-1.448-11.632c-0.086-0.702,0.412-1.203,1.122-1.188c5.749,0.131,9.16-3.447,7.822-8.515c-2.163-8.156-5.194-16.079-7.385-24.228c-0.829-3.071-0.71-6.397-0.881-9.779c-0.037-0.706,0.469-1.109,1.146-0.901c0.583,0.18,1.15,0.354,1.77,0.542c0.678,0.208,1.073-0.179,0.89-0.86c-0.298-1.09-0.571-2.081-0.84-3.061c-0.188-0.686,0.236-1.22,0.942-1.195c3.288,0.103,6.418,0.2,9.869,0.307c0.71,0.02,1.44,0.591,1.628,1.276c6.63,23.697,12.269,47.3-6.557,69.303c-0.461,0.539-1.313,0.633-1.889,0.221c-2.497-1.783-5.431-3.876-9.303-6.638c-0.575-0.412-1.02-0.172-0.991,0.534c0.09,2.415,0.073,3.288,0.212,4.129c0.424,2.509,2.048,6.646,1.224,7.197c-2.195,1.469-5.08,1.901-7.825,2.55c-0.689,0.163-1.302-0.257-1.371-0.963c-0.041-0.38-0.078-0.759-0.114-1.139c-0.073-0.705-0.514-0.853-0.987-0.326c-1.102,1.22-2.256,2.501-3.656,4.048c-0.473,0.526-0.298,1.085,0.388,1.248c2.868,0.682,5.259,1.244,7.948,1.885c0.689,0.163,0.841,0.706,0.245,1.09c-5.427,3.46-14.631-2.024-16.643,8.229c-0.135,0.693,0.375,1.22,1.081,1.179c5.704-0.318,11.563,0.094,16.773-1.555c10.955-3.464,19.274-0.983,26.561,7.634c2.938,3.473,5.807,8.479,12.722,5.284c0.645-0.298,1.11-0.009,1.069,0.697c-0.135,2.383-0.249,4.321-0.343,6.034c-0.041,0.706,0.457,1.053,1.053,0.669c3.745-2.402,4.944-7.312,1.604-11.901c-2.126-2.917-5.708-4.839-8.809-6.952c-2.261-1.538-5.101-2.301-7.173-4.022c-7.259-6.034-6.858-7.969-0.188-14.378c6.703-6.442,12.64-13.681,19.008-20.481c0.882-0.942,2.122-1.547,4.06-2.754c0.601-0.376,1.2-1.253,1.347-1.946c0.404-1.897,0.946-4.48,1.538-7.267c0.147-0.693,0.702-0.882,1.24-0.42c1.18,1.016,2.265,1.95,3.484,2.998c0.539,0.461,1.102,0.277,1.294-0.403c0.265-0.931,0.489-1.641,0.437-2.334c-0.453-5.916,2.374-10.449,5.708-14.937c0.681-0.918,0.167-2.918-0.144-4.346c-0.86-3.974-1.868-7.915-2.893-12.122c-0.167-0.689,0.237-1.048,0.902-0.804c0.93,0.343,1.889,0.694,3.092,1.135c0.666,0.245,1.037-0.11,0.833-0.787c-1.388-4.574-2.604-8.576-3.954-13.02c-0.208-0.678,0.082-0.873,0.637-0.437c0.706,0.551,1.298,1.016,1.845,1.444c0.559,0.437,1.334,0.681,1.733,0.542c0.4-0.134,0.588-0.808,0.421-1.493c-0.739-3.068-1.481-6.141-2.224-9.225c-0.168-0.689,0.179-1.562,0.779-1.938c4.688-2.896,9.963-5.169,11.578-11.754c0.343-1.396,4.158-3.889,5.603-4.631c9.592-4.937,19.775-8.846,30.041-12.272c2.726-0.91,6.495,0.75,9.629,1.726c10.53,3.284,20.815,7.552,31.53,9.968c8.314,1.877,16.422-0.788,23.569-5.965c8.785-6.361,18.087-12.032,26.667-18.646c10.225-7.882,19.906-16.471,29.854-24.712c6.019-4.99,12.208-9.776,18.115-14.893c5.892-5.104,11.628-10.399,17.214-15.838c1.934-1.881,3.187-4.456,4.798-6.684c1.645-2.28,3.203-4.643,5.051-6.752c2.085-2.379,4.957-4.211,6.516-6.854c0.968-1.641,0.824-3.934,0.393-6.197c-0.135-0.698,0.004-1.763,0.326-2.396c3.104-6.132,2.089-7.283-4.19-12.289c-6.618-5.275-13.023-5.439-20.236-2.346c-25.704,11.008-51.441,21.935-77.125,32.992c-33.207,14.292-33.228,15.128-69.013,13.443c-20.768-0.979-41.375-0.906-61.935,1.008c-0.706,0.065-0.787-0.176-0.184-0.547c3.615-2.224,7.156-4.565,10.624-7.025c0.58-0.412,1.571-0.972,2.22-1.257c6.019-2.632,11.954-5.479,17.989-8.087c1.881-0.812,4.034-1.098,6.095-1.379c9.666-1.31,17.422-5.312,21.608-14.704c0.448-1.004,1.615-1.714,2.513-2.484c1.771-1.522,4.395-2.645,5.215-4.554c1.848-4.321,3.541-8.23,7.972-10.849c1.049-0.616,0.522-3.9,0.445-6.903c-0.021-0.71,0.547-1.465,1.187-1.767c3.158-1.494,4.395-4.068,3.207-9.319c-0.819-3.627,3.647-8.152,4.406-12.509c1.208-6.94,4.276-13.799,0.865-21.236c-1.579-3.452-1.13-7.826-1.66-11.771c-1.216-9.029-1.873-18.201-3.986-27.018c-0.845-3.521-3.974-6.5-6.083-9.106c-0.445-0.551-0.372-1.428,0.126-1.926c1.783-1.783,3.632-3.631,5.487-5.488c0.502-0.502,0.502-1.314,0-1.815c-2.048-2.052-4.12-4.121-6.336-6.34c-0.502-0.502-0.429-1.228,0.167-1.608c1.792-1.142,3.99-2.46,5.867-4.137c1.261-1.126,2.366-3.154,2.313-4.733c-0.032-0.906-2.424-2.052-3.929-2.518c-2.252-0.702-4.61-1.069-7.287-1.583c-0.697-0.134-0.791-0.587-0.221-1.003c4.436-3.211,8.507-6.157,12.547-9.082c0.575-0.417,1.012-1.306,0.975-1.987c-0.037-0.681-0.62-1.379-1.306-1.559c-3.814-1-7.654-2.007-11.738-3.08c-0.686-0.18-0.808-0.702-0.265-1.159c2.893-2.457,5.924-4.913,8.747-7.589c3.762-3.566,3.317-6.381-1.709-7.67c-3.791-0.975-8.111-1.22-11.931-0.453c-7.43,1.489-14.7,3.791-22.578,5.965c-0.682,0.188-0.779-0.008-0.217-0.437c34.99-26.573,36.899-28.086,37.426-35.137c0.054-0.706-0.432-1.032-1.072-0.726c-18.76,8.968-37.712,18.029-56.667,27.091c-0.641,0.306-0.755,0.146-0.249-0.351c18.588-18.482,39.327-34.77,51.485-59.348c0.314-0.637,0.094-0.82-0.485-0.412c-19.67,13.978-38.716,27.507-57.744,41.033c-0.58,0.412-1.311,0.514-1.637,0.224c-0.326-0.286-0.236-0.971,0.2-1.53c5.332-6.814,10.787-13.534,15.916-20.498c7.69-10.441,15.431-20.873,22.514-31.726c2.606-3.995,3.773-8.923,5.431-13.538c0.24-0.665,0.04-1.607-0.462-2.109l0,0c-0.501-0.502-1.31-0.494-1.803,0.017c-17.36,17.899-34.721,35.802-52.081,53.701c-0.494,0.51-0.951,0.779-1.028,0.608c-0.073-0.171,0.159-0.804,0.526-1.412c9.062-15.137,18.335-30.151,27.059-45.479c5.218-9.164,4.602-19.343,2.958-29.409c-0.082-0.506-0.481-0.963-1.236-1.571c-0.551-0.445-1.073-0.204-1.154,0.498c-3.154,26.998-23.636,42.493-39.769,61.062c-0.465,0.534-0.611,0.444-0.334-0.208c7.589-17.895,13.835-35.876,8.433-54.366c-0.199-0.682-0.583-0.694-0.832-0.029c-4.141,10.918-7.809,23.028-13.484,34.101c-5.781,11.281-13.562,21.542-21.036,32.052c-0.412,0.58-0.71,0.473-0.665-0.232c1.272-19.939,4.483-39.927-7.679-57.936c-0.396-0.588-0.686-0.481-0.62,0.224c0.355,3.896,0.844,7.793,0.906,11.693c0.261,16.463-3.427,31.983-9.474,47.381c-8.413,21.432-16.471,43.129-18.825,66.365c-0.286,2.807-1.061,5.561-1.808,8.919c-0.155,0.693-0.571,0.763-0.938,0.159c-1.771-2.905-3.346-5.492-5.365-8.804c-0.367-0.604-0.869-0.559-1.146,0.094c-1.057,2.464-2.174,4.247-2.044,5.928c0.559,7.335,0.934,14.818,2.726,21.901c2.913,11.498,6.997,22.697,10.351,34.088c0.51,1.734,0.743,3.476,1.612,4.77c0.396,0.587,0.669,1.416,0.433,1.999c-0.237,0.583-0.429,1.053-0.429,1.053c-0.22,0.677-0.44,1.354-0.665,2.036c-0.22,0.673-0.934,1.016-1.595,0.763c-1.118-0.428-2.228-0.861-3.28-1.338c-1.971-0.897-5.108-0.873-5.961-2.309c-4.619-7.801-10.833-7.414-18.152-4.504c-0.657,0.261-1.089-0.078-0.963-0.775c0.93-5.141,2.04-9.861,2.338-14.631c0.155-2.485-0.857-5.043-1.579-7.581c-0.196-0.681-0.873-1.061-1.55-0.853c-2.542,0.792-5.116,1.501-7.532,2.579c-1.358,0.604-2.477,1.763-4.047,3.129c-0.534,0.465-1,0.249-0.979-0.457c0.236-8.874,4.773-17.344-0.408-25.969c-0.367-0.608-1.142-0.714-1.693-0.269c-2.276,1.848-4.329,3.517-6.601,5.365c-0.551,0.449-1.004,0.236-1.012-0.474c-0.069-6.222-0.134-11.979-0.2-17.707c-0.008-0.71-0.514-1.477-1.13-1.714c-0.616-0.236-1.518-0.024-2.02,0.478c-4.174,4.174-8.352,8.348-12.525,12.525c-0.502,0.502-1.102,0.714-1.338,0.478c-0.236-0.236-0.31-0.991-0.159-1.685c1.657-7.667,3.313-15.333,4.974-22.999c0.151-0.693-0.22-1.55-0.828-1.917c-0.212-0.126-0.424-0.257-0.637-0.384c-0.608-0.367-1.53-0.285-2.077,0.167c-2.868,2.387-5.969,4.574-8.299,7.401c-6.744,8.192-13.104,16.695-19.6,25.088c-0.433,0.559-1.216,0.787-1.742,0.501c-0.526-0.285-0.75-1.048-0.506-1.713c1.036-2.803,1.995-5.643,3.231-8.352c4.251-9.282,8.788-18.438,12.876-27.789c0.787-1.803,0.583-4.039,0.073-6.434c-0.147-0.694-0.763-0.926-1.338-0.51c-15.537,11.265-21.657,29.935-35.513,42.991c-0.514,0.485-0.792,0.314-0.62-0.372c0.947-3.737,1.657-7.576,3.117-11.102c5.067-12.224,10.637-24.239,15.663-36.475c0.992-2.416,0.902-5.271,0.563-8.168c-0.082-0.702-0.681-1.028-1.31-0.698c-9.274,4.92-13.99,13.521-19.555,21.175c-5.455,7.499-10.147,15.549-15.129,23.395c-0.379,0.6-1.024,0.951-1.436,0.788c-0.412-0.164-0.58-0.849-0.379-1.526c5.708-19.237,11.416-38.474,17.124-57.711c0.204-0.681-0.163-1.46-0.808-1.746c-0.204-0.09-0.412-0.18-0.616-0.27c-0.649-0.286-1.624-0.159-2.167,0.298c-17.944,15.084-22.077,39.185-36.345,57.426c-0.437,0.559-0.775,0.428-0.767-0.282c0.041-3.66-0.261-7.397,0.563-10.869c3.452-14.549,7.561-28.943,10.971-43.497c0.853-3.635,0.457-7.561,0.453-11.396c0-0.71-0.526-1.473-1.196-1.706c-0.02-0.008-0.044-0.016-0.069-0.024c-0.669-0.232-1.587,0.012-2.068,0.535c-2.191,2.382-4.598,4.631-6.267,7.335c-11.134,18.042-16.458,38.356-22.326,58.438c-1.081,3.705-1.848,7.503-2.97,12.297c-0.163,0.69-0.539,0.73-0.824,0.082c-4.451-10.155-5.186-19.527-3.745-29.188c1.665-11.204,3.374-22.399,5.092-33.595c0.351-2.276,0.771-4.545,1.179-6.813c0.126-0.698-0.331-1.412-1.016-1.595c-0.135-0.037-0.265-0.069-0.4-0.106c-0.686-0.184-1.599,0.119-2.068,0.649c-1.885,2.122-4.109,4.117-5.059,6.597c-4.248,11.118-8.335,22.33-11.747,33.726c-2.685,8.976-4.411,18.237-6.5,27.389c-0.159,0.689-0.689,1.326-1.187,1.419c-0.498,0.094-0.996-0.396-1.114-1.097c-2.477-14.721-4.949-29.441-7.425-44.162c-0.118-0.698-0.788-1.31-1.493-1.363c-0.123-0.008-0.245-0.016-0.367-0.028c-0.706-0.053-1.473,0.445-1.726,1.105c-1.31,3.411-2.929,6.765-3.55,10.294c-3.292,18.723-2.729,37.536,0.588,56.149C30.351,210.353,41.379,239.443,56.071,267.187z"/></svg></div>
+                    <h3><span data-lang-en>Wildlife</span><span data-lang-bg>Дива природа</span></h3>
+                    <div class="price" style="font-size:1.2rem"><span data-lang-en>Prints & Calendars</span><span data-lang-bg>Принтове и календари</span></div>
+                    <div class="price-secondary"><span data-lang-en>Available by request</span><span data-lang-bg>Налични при запитване</span></div>
+                    <ul class="pricing-features">
+                        <li><span data-lang-en>Custom expedition</span><span data-lang-bg>Персонална експедиция</span></li>
+                        <li><span data-lang-en>High-res images</span><span data-lang-bg>Висока резолюция</span></li>
+                        <li><span data-lang-en>Print-ready files</span><span data-lang-bg>Готови за печат</span></li>
+                    </ul>
+                    <a href="#contact" class="pricing-btn"><span data-lang-en>Inquire</span><span data-lang-bg>Запитване</span></a>
+                </div>
+                <div class="pricing-card fade-in">
+                    <div class="pricing-icon"><svg viewBox="0 0 24 24"><path d="M14.844 20H6.5C5.121 20 4 18.879 4 17.5S5.121 15 6.5 15h7c1.93 0 3.5-1.57 3.5-3.5S15.43 8 13.5 8H8.639a9.812 9.812 0 0 1-1.354 2H13.5c.827 0 1.5.673 1.5 1.5s-.673 1.5-1.5 1.5h-7C4.019 13 2 15.019 2 17.5S4.019 22 6.5 22h9.593a10.415 10.415 0 0 1-1.249-2zM5 2C3.346 2 2 3.346 2 5c0 3.188 3 5 3 5s3-1.813 3-5c0-1.654-1.346-3-3-3zm0 4.5a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 5 6.5z"/><path d="M19 14c-1.654 0-3 1.346-3 3 0 3.188 3 5 3 5s3-1.813 3-5c0-1.654-1.346-3-3-3zm0 4.5a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 19 18.5z"/></svg></div>
+                    <h3><span data-lang-en>Wildlife Photography Workshop</span><span data-lang-bg>Полева фотография на диви животни</span></h3>
+                    <div class="price">€35</div>
+                    <div class="price-secondary">~70 лв.</div>
+                    <ul class="pricing-features">
+                        <li><span data-lang-en>PODA Burgas</span><span data-lang-bg>ПОДА Бургас</span></li>
+                        <li><span data-lang-en>Atanasovsko Lake</span><span data-lang-bg>Атанасовско езеро</span></li>
+                        <li><span data-lang-en>Bird photography tips</span><span data-lang-bg>Съвети за птици</span></li>
+                    </ul>
+                    <div class="pricing-notice"><span data-lang-en><svg style="width:16px;height:16px;vertical-align:middle;fill:none;stroke:var(--accent);stroke-width:2" viewBox="0 0 24 24"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg> Bicycle trip included</span><span data-lang-bg><svg style="width:16px;height:16px;vertical-align:middle;fill:none;stroke:var(--accent);stroke-width:2" viewBox="0 0 24 24"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg> Включва велосипедно пътуване</span></div>
+                    <a href="#contact" class="pricing-btn"><span data-lang-en>Book</span><span data-lang-bg>Резервирай</span></a>
+                </div>
+                <div class="pricing-card fade-in">
+                    <div class="pricing-icon"><svg viewBox="0 0 64 64"><g transform="translate(-288)"><path d="M306.52,28.43c-.65.01-1.28.2-1.77.68-.19.19-.33.41-.44.64a1 1 0 0 0-.01.01l-12.24,27.63a1 1 0 0 0 1.32 1.32l27.55-12.21a1 1 0 0 0 .03-.02c.25-.11.49-.26.7-.46.64-.64.76-1.55.64-2.42-.12-.86-.46-1.78-.97-2.77-1.02-1.98-2.74-4.25-4.94-6.46-2.2-2.2-4.47-3.92-6.45-4.94-.99-.51-1.91-.86-2.77-.98-.22-.03-.44-.04-.65-.04zm.05 2c.09 0 .2.01.32.03.51.07 1.27.33 2.13.77 1.72.89 3.88 2.49 5.96 4.57 2.08 2.08 3.69 4.24 4.58 5.96.44.86.7 1.61.77 2.13.07.51-.03.68-.07.73-.04.04-.21.14-.73.07-.51-.07-1.27-.33-2.13-.77-1.72-.89-3.88-2.5-5.96-4.58-2.08-2.08-3.69-4.24-4.57-5.96-.44-.86-.7-1.61-.77-2.13-.05-.37-.01-.56.03-.66l.01-.02v0c.01-.02.02-.04.03-.05.03-.03.14-.1.4-.1zm-1.79 3.21c.1.22.2.43.32.66 1.02 1.98 2.73 4.25 4.94 6.46 2.2 2.2 4.48 3.92 6.46 4.94.22.11.44.22.65.31l-7.71 3.41c-1.64-.96-3.51-2.44-5.25-4.17-1.13-1.13-2.16-2.32-3-3.48zm-4.52 10.21c.76.95 1.6 1.9 2.51 2.81 1.45 1.45 2.98 2.73 4.46 3.74l-12.29 5.44z"/><path d="M341.63,26.14c-5.45-.47-9.99 1.47-13.31 3.83-4.42 3.15-6.82 7.07-6.82 7.07a1 1 0 0 0 .33 1.38 1 1 0 0 0 1.38-.33s2.22-3.59 6.28-6.49c4.06-2.89 9.8-5.06 17.18-2.24a1 1 0 0 0 1.29-.58 1 1 0 0 0-.58-1.29c-2.01-.77-3.93-1.19-5.75-1.35z"/><path d="M332.39,8.05a1 1 0 0 0-1.09.9s-.4 4.21-2.76 8.6c-2.36 4.39-6.55 8.87-14.42 9.61a1 1 0 0 0-.9 1.09 1 1 0 0 0 1.09.9c8.57-.8 13.42-5.87 15.99-10.65 2.57-4.78 2.99-9.36 2.99-9.36a1 1 0 0 0-.9-1.09z"/><circle cx="310.21" cy="18.6" r="3"/><circle cx="343.43" cy="11.37" r="3.62"/><circle cx="345.02" cy="48.78" r="3"/><path d="M323.25,7.84a1 1 0 0 0-1 1v1.39h-1.39a1 1 0 0 0 0 2h1.39v1.39a1 1 0 0 0 2 0v-1.39h1.39a1 1 0 0 0 0-2h-1.39V8.84a1 1 0 0 0-1-1z"/><path d="M335.44,17.99a1 1 0 0 0-.71.29 1 1 0 0 0 0 1.41l.98.98-.98.98a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.98-.98.98.98a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.98-.98.98-.98a1 1 0 0 0 0-1.41 1 1 0 0 0-.71-.29 1 1 0 0 0-.7.29l-.98.98-.98-.98a1 1 0 0 0-.71-.29z"/><path d="M336.42,36.18a1 1 0 0 0-1 1v1.39h-1.39a1 1 0 0 0 0 2h1.39v1.39a1 1 0 0 0 2 0v-1.39h1.39a1 1 0 0 0 0-2h-1.39v-1.39a1 1 0 0 0-1-1z"/></g></svg></div>
+                    <h3><span data-lang-en>Events</span><span data-lang-bg>Събития</span></h3>
+                    <div class="price">€120</div>
+                    <div class="price-secondary">~240 лв.</div>
+                    <ul class="pricing-features">
+                        <li><span data-lang-en>Full day coverage</span><span data-lang-bg>Целодневно покритие</span></li>
+                        <li><span data-lang-en>100+ edited photos</span><span data-lang-bg>100+ обработени снимки</span></li>
+                        <li><span data-lang-en>Photo album included</span><span data-lang-bg>Фотоалбум включен</span></li>
+                    </ul>
+                    <a href="#contact" class="pricing-btn"><span data-lang-en>Contact</span><span data-lang-bg>Контакт</span></a>
+                </div>
+                <div class="pricing-card fade-in">
+                    <div class="pricing-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+                    <h3><span data-lang-en>Portrait</span><span data-lang-bg>Портрет</span></h3>
+                    <div class="price">€40</div>
+                    <div class="price-secondary">~80 лв.</div>
+                    <ul class="pricing-features">
+                        <li><span data-lang-en>1-2 hours session</span><span data-lang-bg>1-2 часа сесия</span></li>
+                        <li><span data-lang-en>15+ edited photos</span><span data-lang-bg>15+ обработени снимки</span></li>
+                        <li><span data-lang-en>Studio or outdoor</span><span data-lang-bg>Студио или на открито</span></li>
+                    </ul>
+                    <a href="#contact" class="pricing-btn"><span data-lang-en>Book Now</span><span data-lang-bg>Резервирай</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-header fade-in"><h2 class="section-title"><span data-lang-en>Contact</span><span data-lang-bg>Контакти</span></h2><div class="section-line"></div></div>
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <h3><span data-lang-en>Get in Touch</span><span data-lang-bg>Свържете се</span></h3>
+                    <p data-lang-en>Ready to capture your special moments? Contact me for bookings and inquiries.</p>
+                    <p data-lang-bg>Готови ли сте да уловите вашите специални моменти? Свържете се за резервации и запитвания.</p>
+                    <ul class="contact-details">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>foto.arabadzhiev@gmail.com</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.35a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.75.34 1.54.57 2.35.7A2 2 0 0 1 22 16.92z"/></svg><span>+359 XX XXX XXXX</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-lang-en>Burgas, Bulgaria</span><span data-lang-bg>Бургас, България</span></li>
+                    </ul>
+                </div>
+                <div class="fade-in">
+                    <form class="contact-form" id="contact-form" action="https://formspree.io/f/xykynyad" method="POST">
+                        <input type="hidden" name="_subject" value="Ново запитване от сайта">
+                        <input type="text" name="name" placeholder="Име / Name" required>
+                        <input type="email" name="email" placeholder="Имейл / Email" required>
+                        <input type="text" name="phone" placeholder="Телефон / Phone">
+                        <textarea name="message" placeholder="Съобщение / Message" required></textarea>
+                        <button type="submit"><span data-lang-en>Send</span><span data-lang-bg>Изпрати</span></button>
+                    </form>
+                    <div class="form-thanks" id="form-thanks">
+                        <div class="thanks-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                        <h3><span data-lang-en>Thank You!</span><span data-lang-bg>Благодаря!</span></h3>
+                        <p><span data-lang-en>Your message has been sent. I'll get back to you soon!</span><span data-lang-bg>Съобщението е изпратено. Ще се свържа с вас скоро!</span></p>
+                        <button onclick="resetForm()"><span data-lang-en>Send Another</span><span data-lang-bg>Изпрати друго</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Studio Arabadzhiev</div>
+            <ul class="footer-links">
+                <li><a href="#home"><span data-lang-en>Home</span><span data-lang-bg>Начало</span></a></li>
+                <li><a href="#portfolio"><span data-lang-en>Portfolio</span><span data-lang-bg>Портфолио</span></a></li>
+                <li><a href="#contact"><span data-lang-en>Contact</span><span data-lang-bg>Контакти</span></a></li>
+            </ul>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/studio.arabadzhiev" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/></svg></a>
+                <a href="https://www.facebook.com/StudioArabadzhiev/" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                <a href="https://www.tiktok.com/@studio.arabadzhiev" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Studio Arabadzhiev</p>
+            <p class="footer-credit"><span data-lang-en>Designed by</span><span data-lang-bg>Дизайн от</span> <a href="https://www.studiobekasin.com" target="_blank">Studio Bekasin</a></p>
+        </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()"><button class="lightbox-close">×</button><img src="" alt="" id="lightbox-img"></div>
+
+    <script>
+        function toggleTheme(){
+            const body=document.body;
+            const current=body.getAttribute('data-theme')||'light',next=current==='light'?'dark':'light';
+            body.setAttribute('data-theme',next);localStorage.setItem('preferred-theme',next);
+            document.getElementById('theme-icon-light').style.display=next==='light'?'block':'none';
+            document.getElementById('theme-icon-dark').style.display=next==='dark'?'block':'none';
+        }
+        function setLanguage(l){document.documentElement.lang=l;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));localStorage.setItem('preferred-lang',l)}
+        function toggleNav(){document.querySelector('.main-nav').classList.toggle('open');document.querySelector('.nav-trigger').classList.toggle('active');document.querySelector('.nav-overlay').classList.toggle('active');document.body.style.overflow=document.querySelector('.main-nav').classList.contains('open')?'hidden':''}
+        
+        let currentSlide=0,slides,totalSlides,slideInterval;
+        function initSlideshow(){slides=document.querySelectorAll('.slide');totalSlides=slides.length;const c=document.getElementById('slide-indicators');for(let i=0;i<totalSlides;i++){const d=document.createElement('div');d.className='slide-indicator'+(i===0?' active':'');d.onclick=()=>{stopSlideshow();goToSlide(i);startSlideshow()};c.appendChild(d)}}
+        function goToSlide(n){slides[currentSlide].classList.remove('active');document.querySelectorAll('.slide-indicator')[currentSlide].classList.remove('active');currentSlide=n;if(currentSlide>=totalSlides)currentSlide=0;if(currentSlide<0)currentSlide=totalSlides-1;slides[currentSlide].classList.add('active');document.querySelectorAll('.slide-indicator')[currentSlide].classList.add('active')}
+        function nextSlide(){goToSlide(currentSlide+1)}
+        function prevSlide(){goToSlide(currentSlide-1)}
+        function startSlideshow(){slideInterval=setInterval(nextSlide,6000)}
+        function stopSlideshow(){clearInterval(slideInterval)}
+        document.querySelector('.hero')?.addEventListener('mouseenter',stopSlideshow);
+        document.querySelector('.hero')?.addEventListener('mouseleave',startSlideshow);
+        document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){stopSlideshow();nextSlide();startSlideshow()}else if(e.key==='ArrowLeft'){stopSlideshow();prevSlide();startSlideshow()}else if(e.key==='Escape')closeLightbox()});
+        
+        function filterPortfolio(c){document.querySelectorAll('.category-btn').forEach(b=>b.classList.toggle('active',b.dataset.filter===c));document.querySelectorAll('.portfolio-item').forEach(i=>i.style.display=(c==='all'||i.dataset.category===c)?'block':'none')}
+        function openLightbox(e){document.getElementById('lightbox-img').src=e.querySelector('img').src;document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden'}
+        function closeLightbox(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}
+        
+        document.getElementById('contact-form')?.addEventListener('submit',async function(e){e.preventDefault();const btn=this.querySelector('button');btn.disabled=true;btn.textContent='...';try{const r=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});if(r.ok){this.style.display='none';document.getElementById('form-thanks').classList.add('active');this.reset()}else throw new Error()}catch{alert('Error')}btn.disabled=false;btn.innerHTML='<span data-lang-en>Send</span><span data-lang-bg>Изпрати</span>';setLanguage(document.documentElement.lang)});
+        function resetForm(){document.getElementById('contact-form').style.display='flex';document.getElementById('form-thanks').classList.remove('active')}
+        
+        document.addEventListener('DOMContentLoaded',()=>{
+            const t=localStorage.getItem('preferred-theme')||'light';
+            document.body.setAttribute('data-theme',t);
+            document.getElementById('theme-icon-light').style.display=t==='light'?'block':'none';
+            document.getElementById('theme-icon-dark').style.display=t==='dark'?'block':'none';
+            setLanguage(localStorage.getItem('preferred-lang')||'bg');
+            initSlideshow();startSlideshow();
+            const obs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible')}),{threshold:0.1});
+            document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});if(document.querySelector('.main-nav').classList.contains('open'))toggleNav()}));
+    </script>
+</body>
+</html>
