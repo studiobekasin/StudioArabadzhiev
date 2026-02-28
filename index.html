@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Outfit:wght@200;300;400;500&family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+    <!-- Preload Sedgwick Ave Display to prevent FOUT on desktop -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap" as="style">
     <style>
         :root{--bg-primary:#fafafa;--bg-secondary:#fff;--bg-tertiary:#f0f0f0;--text-primary:#1a1a1a;--text-secondary:#555;--text-muted:#888;--accent:#b8962f;--accent-light:#d4af37;--font-display:'Cormorant Garamond',Georgia,serif;--font-body:'Outfit',sans-serif}
         [data-theme="dark"]{--bg-primary:#0a0a0a;--bg-secondary:#111;--bg-tertiary:#1a1a1a;--text-primary:#f5f5f5;--text-secondary:#a0a0a0;--text-muted:#666;--accent:#d4af37;--accent-light:#e8c547}
@@ -61,7 +63,7 @@
         .hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(255,255,255,0.15) 0%,transparent 40%,rgba(255,255,255,0.6) 100%);z-index:1;transition:background-color 0.5s ease}
         [data-theme="dark"] .hero-overlay{background:linear-gradient(180deg,rgba(10,10,10,0.3) 0%,transparent 40%,rgba(10,10,10,0.75) 100%)}
         .hero-content{position:absolute;bottom:15%;left:50%;transform:translateX(-50%);text-align:center;z-index:2;width:90%;max-width:800px}
-        .hero-title{font-family:'Sedgwick Ave Display',cursive;font-size:clamp(2.5rem,8vw,5rem);font-weight:400;letter-spacing:0.1em;margin-bottom:1rem;text-transform:none;animation:fadeInUp 1s;text-shadow:1px 1px 3px rgba(0,0,0,0.15)}
+        .hero-title{font-family:'Sedgwick Ave Display',cursive;font-size:clamp(2.5rem,8vw,5rem);font-weight:400;letter-spacing:0.1em;margin-bottom:1rem;text-transform:none;animation:fadeInUp 1s;text-shadow:1px 1px 3px rgba(0,0,0,0.15);font-display:swap}
         .hero-subtitle{font-size:clamp(0.9rem,2vw,1.1rem);font-weight:200;letter-spacing:0.3em;color:#1a1a1a;text-transform:uppercase;animation:fadeInUp 1s 0.2s backwards}
         [data-theme="dark"] .hero-subtitle{color:var(--accent)}
         @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
@@ -74,7 +76,7 @@
         .slide-indicator{width:40px;height:3px;background:rgba(0,0,0,0.2);cursor:pointer;transition:0.4s}
         [data-theme="dark"] .slide-indicator{background:rgba(255,255,255,0.3)}
         .slide-indicator.active{background:var(--accent)}
-        .scroll-indicator{position:absolute;bottom:10%;left:50%;transform:translateX(-50%);z-index:2;animation:bounce 2s infinite}
+        .scroll-indicator{position:absolute;bottom:10%;left:50%;transform:translateX(-50%);z-index:2;animation:bounce 2s infinite;cursor:pointer;text-decoration:none}
         .scroll-indicator svg{width:30px;height:30px;stroke:var(--accent)}
         @keyframes bounce{0%,20%,50%,80%,100%{transform:translateX(-50%) translateY(0)}40%{transform:translateX(-50%) translateY(-10px)}}
         
@@ -210,28 +212,19 @@
 
     <section id="home" class="hero">
         <div class="slideshow">
-            <!-- ============================================================
-                 SLIDESHOW IMAGES - Add or remove slides here.
-                 Each slide is a <div class="slide"> with an <img> inside.
-                 The first slide should have class="slide active".
-                 Example: <div class="slide"><img src="YOUR_IMAGE_URL" alt="description"></div>
-                 ============================================================ -->
-            <div class="slide active"><img src="https://live.staticflickr.com/65535/55088414772_d5bfbcd448_b.jpg" alt="Drone aerial"></div>
+            <div class="slide active"><img src="https://live.staticflickr.com/65535/55088414772_d5bfbcd448.jpg" alt="Drone aerial"></div>
             <div class="slide"><img src="https://live.staticflickr.com/65535/46851254025_6486f27e49_b.jpg" alt="Wildlife"></div>
-            <div class="slide"><img src="https://live.staticflickr.com/65535/55089565149_b7c1ea5e3e_b.jpg" alt="Drone landscape"></div>
+            <div class="slide"><img src="https://live.staticflickr.com/65535/55089565149_b7c1ea5e3e.jpg" alt="Drone landscape"></div>
             <div class="slide"><img src="https://live.staticflickr.com/65535/47625048481_805a9e2cf4_b.jpg" alt="Wildlife"></div>
             <div class="slide"><img src="https://live.staticflickr.com/65535/55115424376_8d4bc37481_b.jpg" alt="Events"></div>
-            <div class="slide"><img src="https://live.staticflickr.com/65535/55089507878_46f1054d3d_b.jpg" alt="Drone"></div>
+            <div class="slide"><img src="https://live.staticflickr.com/65535/55089507878_46f1054d3d.jpg" alt="Drone"></div>
             <div class="slide"><img src="https://live.staticflickr.com/65535/51092293502_e84d7bb237_b.jpg" alt="Wildlife"></div>
-            <!-- Additional event shots -->
-            <div class="slide"><img src="https://live.staticflickr.com/65535/55115815100_e80966d357_b.jpg" alt="Event celebration"></div>
-            <div class="slide"><img src="https://live.staticflickr.com/65535/55115642248_ea016308ef_b.jpg" alt="Event together"></div>
+            <div class="slide"><img src="https://live.staticflickr.com/65535/55115815100_e80966d357_c.jpg" alt="Event celebration"></div>
+            <div class="slide"><img src="https://live.staticflickr.com/65535/55115642248_ea016308ef_w.jpg" alt="Event together"></div>
             <div class="slide"><img src="https://live.staticflickr.com/65535/55114564042_aa9b18b711_b.jpg" alt="Event joy"></div>
-            <div class="slide"><img src="https://live.staticflickr.com/65535/55115704794_c60d57502b_b.jpg" alt="Event memories"></div>
-            <!-- Additional drone shots -->
-            <div class="slide"><img src="https://live.staticflickr.com/65535/55089507733_22b0162824_b.jpg" alt="Drone birds eye"></div>
-            <div class="slide"><img src="https://live.staticflickr.com/65535/55089507923_c0dcccdc12_b.jpg" alt="Drone horizon"></div>
-            <!-- END SLIDESHOW IMAGES -->
+            <div class="slide"><img src="https://live.staticflickr.com/65535/55115704794_c60d57502b_w.jpg" alt="Event memories"></div>
+            <div class="slide"><img src="https://live.staticflickr.com/65535/55089507733_22b0162824.jpg" alt="Drone birds eye"></div>
+            <div class="slide"><img src="https://live.staticflickr.com/65535/55089507923_c0dcccdc12_z.jpg" alt="Drone horizon"></div>
         </div>
         <div class="hero-overlay"></div>
         <button class="slide-nav prev" onclick="prevSlide()">‹</button>
@@ -241,7 +234,7 @@
             <p class="hero-subtitle"><span data-lang-en>Professional Photography</span><span data-lang-bg>Професионална Фотография</span></p>
         </div>
         <div class="slide-indicators" id="slide-indicators"></div>
-        <div class="scroll-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
+        <a href="#portfolio" class="scroll-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></a>
     </section>
 
     <section id="about">
@@ -263,58 +256,78 @@
             <div class="section-header fade-in"><h2 class="section-title"><span data-lang-en>Portfolio</span><span data-lang-bg>Портфолио</span></h2><div class="section-line"></div></div>
             <div class="portfolio-categories fade-in">
                 <button class="category-btn active" data-filter="all" onclick="filterPortfolio('all')"><span data-lang-en>All</span><span data-lang-bg>Всички</span></button>
+                <button class="category-btn" data-filter="events" onclick="filterPortfolio('events')"><span data-lang-en>Events</span><span data-lang-bg>Събития</span></button>
+                <button class="category-btn" data-filter="portraits" onclick="filterPortfolio('portraits')"><span data-lang-en>Portraits</span><span data-lang-bg>Портрети</span></button>
                 <button class="category-btn" data-filter="drone" onclick="filterPortfolio('drone')"><span data-lang-en>Drone</span><span data-lang-bg>Дрон</span></button>
                 <button class="category-btn" data-filter="wildlife" onclick="filterPortfolio('wildlife')"><span data-lang-en>Wildlife</span><span data-lang-bg>Дива природа</span></button>
-                <button class="category-btn" data-filter="events" onclick="filterPortfolio('events')"><span data-lang-en>Events</span><span data-lang-bg>Събития</span></button>
             </div>
             <div class="portfolio-grid" id="portfolio-grid">
-                <!-- ============================================================
-                     PORTFOLIO IMAGES - Add or remove portfolio items here.
-                     Each item needs: data-category="drone|wildlife|events"
-                     Template:
-                     <div class="portfolio-item fade-in" data-category="YOUR_CATEGORY" onclick="openLightbox(this)">
-                         <img src="YOUR_IMAGE_URL" alt="description">
-                         <div class="portfolio-overlay">
-                             <h4><span data-lang-en>English Title</span><span data-lang-bg>Заглавие на БГ</span></h4>
-                             <span>Category Label</span>
-                         </div>
-                     </div>
-                     ============================================================ -->
+                <!-- EVENT PHOTOS -->
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115424376_8d4bc37481_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Special Moments</span><span data-lang-bg>Специални моменти</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115815100_e80966d357_c.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Celebration</span><span data-lang-bg>Празненство</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115642248_ea016308ef_w.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Together</span><span data-lang-bg>Заедно</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55114564042_aa9b18b711_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Joy</span><span data-lang-bg>Радост</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115704794_c60d57502b_w.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Memories</span><span data-lang-bg>Спомени</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115642393_2201245fe7_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Party Time</span><span data-lang-bg>Време за парти</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115439266_d258490f0e.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Gathering</span><span data-lang-bg>Събиране</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115642623_ae73c4b225.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Happy Day</span><span data-lang-bg>Щастлив ден</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115709579_00828395dd_w.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Unforgettable</span><span data-lang-bg>Незабравимо</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55114588167_50535b6f7e_z.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Cheers</span><span data-lang-bg>Наздраве</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55119513647_7db2118b5d.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Laughter</span><span data-lang-bg>Смях</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55120390196_ce7f87ae0b_z.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Dance</span><span data-lang-bg>Танц</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55120589498_3550c03870.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Warmth</span><span data-lang-bg>Топлина</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55120390066_4bf9ef485f.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Friends</span><span data-lang-bg>Приятели</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55120782505_dc1cbc345d_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Embrace</span><span data-lang-bg>Прегръдка</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55120498661_18426f2c52_w.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Festive</span><span data-lang-bg>Празнично</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55120891195_db3186fa3c_w.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Toast</span><span data-lang-bg>Тост</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55120699443_f8e6eb06aa_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Magic</span><span data-lang-bg>Магия</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55119623467_65667aa36e_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Elegance</span><span data-lang-bg>Елегантност</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55120754924_1b16eda986_w.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Night Out</span><span data-lang-bg>Нощ навън</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55120754944_c447b79cdf_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Bliss</span><span data-lang-bg>Блаженство</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55120498761_8f1a91ebf2_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Glow</span><span data-lang-bg>Сияние</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55120891335_2e07bf023c_w.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Sparkle</span><span data-lang-bg>Искра</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55120699563_fb55c1ae5a_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Harmony</span><span data-lang-bg>Хармония</span></h4><span>Events</span></div></div>
+                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55120891415_d4d5f0a449_w.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Unity</span><span data-lang-bg>Единство</span></h4><span>Events</span></div></div>
+                <!-- END EVENT PHOTOS -->
+
+                <!-- PORTRAIT PHOTOS -->
+                <div class="portfolio-item fade-in" data-category="portraits" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55120390181_2f12f7957e_w.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Portrait</span><span data-lang-bg>Портрет</span></h4><span>Portraits</span></div></div>
+                <div class="portfolio-item fade-in" data-category="portraits" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55120390166_1a4d13750e_w.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Expression</span><span data-lang-bg>Израз</span></h4><span>Portraits</span></div></div>
+                <div class="portfolio-item fade-in" data-category="portraits" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55120589493_8ae8c9067b_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Character</span><span data-lang-bg>Характер</span></h4><span>Portraits</span></div></div>
+                <div class="portfolio-item fade-in" data-category="portraits" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115704794_c60d57502b_w.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Emotion</span><span data-lang-bg>Емоция</span></h4><span>Portraits</span></div></div>
+                <div class="portfolio-item fade-in" data-category="portraits" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55120390181_2f12f7957e_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Soul</span><span data-lang-bg>Душа</span></h4><span>Portraits</span></div></div>
+                <!-- END PORTRAIT PHOTOS -->
+
                 <!-- DRONE PHOTOS -->
-                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55088414772_d5bfbcd448_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Aerial View</span><span data-lang-bg>Въздушен изглед</span></h4><span>Drone</span></div></div>
-                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55089565149_b7c1ea5e3e_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Landscape</span><span data-lang-bg>Пейзаж</span></h4><span>Drone</span></div></div>
-                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55089507878_46f1054d3d_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>From Above</span><span data-lang-bg>Отгоре</span></h4><span>Drone</span></div></div>
-                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55089507733_22b0162824_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Bird's Eye</span><span data-lang-bg>Птичи поглед</span></h4><span>Drone</span></div></div>
-                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55089507923_c0dcccdc12_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Horizon</span><span data-lang-bg>Хоризонт</span></h4><span>Drone</span></div></div>
+                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55089507923_c0dcccdc12_z.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Horizon</span><span data-lang-bg>Хоризонт</span></h4><span>Drone</span></div></div>
+                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55089507733_22b0162824.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Bird's Eye</span><span data-lang-bg>Птичи поглед</span></h4><span>Drone</span></div></div>
+                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55089507878_46f1054d3d.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>From Above</span><span data-lang-bg>Отгоре</span></h4><span>Drone</span></div></div>
+                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55089565149_b7c1ea5e3e.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Landscape</span><span data-lang-bg>Пейзаж</span></h4><span>Drone</span></div></div>
+                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55088414772_d5bfbcd448.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Aerial View</span><span data-lang-bg>Въздушен изглед</span></h4><span>Drone</span></div></div>
+                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115524061_f5deb83710.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Perspective</span><span data-lang-bg>Перспектива</span></h4><span>Drone</span></div></div>
+                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55114649552_d048b649db.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Altitude</span><span data-lang-bg>Височина</span></h4><span>Drone</span></div></div>
+                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115917945_3b198ecc24_z.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Skyline</span><span data-lang-bg>Линия на хоризонта</span></h4><span>Drone</span></div></div>
+                <div class="portfolio-item fade-in" data-category="drone" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115791579_7b96fee08a.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Flight</span><span data-lang-bg>Полет</span></h4><span>Drone</span></div></div>
                 <!-- END DRONE PHOTOS -->
 
                 <!-- WILDLIFE PHOTOS -->
                 <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/46851254025_6486f27e49_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Nature's Beauty</span><span data-lang-bg>Красотата на природата</span></h4><span>Wildlife</span></div></div>
                 <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/47625048481_805a9e2cf4_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Wild Encounter</span><span data-lang-bg>Дива среща</span></h4><span>Wildlife</span></div></div>
-                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/48925234423_bc6355b7f3_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Forest Life</span><span data-lang-bg>Горски живот</span></h4><span>Wildlife</span></div></div>
-                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/53818619109_1a5c4598d4_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Wings</span><span data-lang-bg>Криле</span></h4><span>Wildlife</span></div></div>
-                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/53818530458_5e433481dc_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>In the Wild</span><span data-lang-bg>В дивото</span></h4><span>Wildlife</span></div></div>
-                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/53818720960_871182abc7_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Natural Habitat</span><span data-lang-bg>Естествена среда</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/53818619109_1a5c4598d4_w.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Wings</span><span data-lang-bg>Криле</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/53818530458_5e433481dc.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>In the Wild</span><span data-lang-bg>В дивото</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/53818720960_871182abc7_z.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Natural Habitat</span><span data-lang-bg>Естествена среда</span></h4><span>Wildlife</span></div></div>
                 <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/52806333761_b479d8e632_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Feathers</span><span data-lang-bg>Пера</span></h4><span>Wildlife</span></div></div>
-                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/52806590709_785bb8da41_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Freedom</span><span data-lang-bg>Свобода</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/52806590709_785bb8da41_c.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Freedom</span><span data-lang-bg>Свобода</span></h4><span>Wildlife</span></div></div>
                 <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/51092293502_e84d7bb237_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Wild Spirit</span><span data-lang-bg>Див дух</span></h4><span>Wildlife</span></div></div>
-                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/52806736355_c3b392e892_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Nature's Child</span><span data-lang-bg>Дете на природата</span></h4><span>Wildlife</span></div></div>
-                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115457136_05a5e306eb_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Eyes of Wild</span><span data-lang-bg>Очите на дивото</span></h4><span>Wildlife</span></div></div>
-                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115664778_b2b15315c6_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Silent Hunter</span><span data-lang-bg>Тих ловец</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/52806736355_c3b392e892.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Nature's Child</span><span data-lang-bg>Дете на природата</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/53818281121_2b33c96e72_w.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Gaze</span><span data-lang-bg>Поглед</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115457136_05a5e306eb_z.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Eyes of Wild</span><span data-lang-bg>Очите на дивото</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115664778_b2b15315c6.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Silent Hunter</span><span data-lang-bg>Тих ловец</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115461246_b62a25a40d.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Patience</span><span data-lang-bg>Търпение</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115664853_2b751d66fe_z.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Grace</span><span data-lang-bg>Грация</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/52806776068_638b499fd6_c.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Serenity</span><span data-lang-bg>Спокойствие</span></h4><span>Wildlife</span></div></div>
+                <div class="portfolio-item fade-in" data-category="wildlife" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/48367871051_f464d9f47e_c.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Wilderness</span><span data-lang-bg>Пустош</span></h4><span>Wildlife</span></div></div>
                 <!-- END WILDLIFE PHOTOS -->
-
-                <!-- EVENT PHOTOS -->
-                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115424376_8d4bc37481_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Special Moments</span><span data-lang-bg>Специални моменти</span></h4><span>Events</span></div></div>
-                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115815100_e80966d357_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Celebration</span><span data-lang-bg>Празненство</span></h4><span>Events</span></div></div>
-                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115642248_ea016308ef_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Together</span><span data-lang-bg>Заедно</span></h4><span>Events</span></div></div>
-                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55114564042_aa9b18b711_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Joy</span><span data-lang-bg>Радост</span></h4><span>Events</span></div></div>
-                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115704794_c60d57502b_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Memories</span><span data-lang-bg>Спомени</span></h4><span>Events</span></div></div>
-                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115642393_2201245fe7_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Party Time</span><span data-lang-bg>Време за парти</span></h4><span>Events</span></div></div>
-                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115439266_d258490f0e_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Gathering</span><span data-lang-bg>Събиране</span></h4><span>Events</span></div></div>
-                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55115642623_ae73c4b225_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Happy Day</span><span data-lang-bg>Щастлив ден</span></h4><span>Events</span></div></div>
-                <div class="portfolio-item fade-in" data-category="events" onclick="openLightbox(this)"><img src="https://live.staticflickr.com/65535/55114588167_50535b6f7e_b.jpg" alt=""><div class="portfolio-overlay"><h4><span data-lang-en>Unforgettable</span><span data-lang-bg>Незабравимо</span></h4><span>Events</span></div></div>
-                <!-- END EVENT PHOTOS -->
-                <!-- END PORTFOLIO IMAGES -->
             </div>
         </div>
     </section>
@@ -373,7 +386,7 @@
                     <a href="#contact" class="pricing-btn"><span data-lang-en>Contact</span><span data-lang-bg>Контакт</span></a>
                 </div>
                 <div class="pricing-card fade-in">
-                    <div class="pricing-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+                    <div class="pricing-icon"><svg viewBox="0 0 24 24" fill="var(--accent)"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.342 4.985c.422-.724.633-1.085.927-1.348a2.5 2.5 0 0 1 .898-.516C9.542 3 9.96 3 10.797 3h2.405c.838 0 1.256 0 1.631.121a2.5 2.5 0 0 1 .898.516c.294.263.505.624.927 1.348L17.25 6H18c1.4 0 2.1 0 2.635.272a2.5 2.5 0 0 1 1.092 1.093C22 7.9 22 8.6 22 10v6c0 1.4 0 2.1-.273 2.635a2.5 2.5 0 0 1-1.092 1.092C20.1 20 19.4 20 18 20H6c-1.4 0-2.1 0-2.635-.273a2.5 2.5 0 0 1-1.093-1.092C2 18.1 2 17.4 2 16v-6c0-1.4 0-2.1.272-2.635a2.5 2.5 0 0 1 1.093-1.093C3.9 6 4.6 6 6 6h.75l.592-1.015zM12 17.05a4.75 4.75 0 1 0 0-9.5 4.75 4.75 0 0 0 0 9.5zm2.7-4.75a2.7 2.7 0 1 1-5.4 0 2.7 2.7 0 0 1 5.4 0z"/></svg></div>
                     <h3><span data-lang-en>Portrait</span><span data-lang-bg>Портрет</span></h3>
                     <div class="price">€40</div>
                     <div class="price-secondary">~80 лв.</div>
@@ -429,6 +442,7 @@
                 <li><a href="#home"><span data-lang-en>Home</span><span data-lang-bg>Начало</span></a></li>
                 <li><a href="#portfolio"><span data-lang-en>Portfolio</span><span data-lang-bg>Портфолио</span></a></li>
                 <li><a href="#contact"><span data-lang-en>Contact</span><span data-lang-bg>Контакти</span></a></li>
+                <li><a href="sitemap.xml"><span data-lang-en>Sitemap</span><span data-lang-bg>Карта на сайта</span></a></li>
             </ul>
             <div class="footer-social">
                 <a href="https://www.instagram.com/studio.arabadzhiev" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/></svg></a>
