@@ -1,9 +1,175 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://studioarabadzhiev.com/</loc>
-    <lastmod>2026-03-06</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+
+    <!-- EVENTS PHOTOS -->
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55115424376_8d4bc37481_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55115815100_e80966d357_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55115439266_d258490f0e_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55115642623_ae73c4b225_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55114588167_50535b6f7e_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55119513647_7db2118b5d_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55120390196_ce7f87ae0b_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55120589498_3550c03870_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55120390066_4bf9ef485f_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55115642248_ea016308ef_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55114564042_aa9b18b711_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55115704794_c60d57502b_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55115642393_2201245fe7_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55115709579_00828395dd_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55120782505_dc1cbc345d_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55120498661_18426f2c52_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55120891195_db3186fa3c_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55120699443_f8e6eb06aa_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55119623467_65667aa36e_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55120754924_1b16eda986_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55120754944_c447b79cdf_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55120498761_8f1a91ebf2_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55120891335_2e07bf023c_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55120699563_fb55c1ae5a_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55120891415_d4d5f0a449_b.jpg</image:loc>
+    </image:image>
+
+    <!-- DRONE PHOTOS -->
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55089507923_c0dcccdc12_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55089507733_22b0162824_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55089507878_46f1054d3d_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55089565149_b7c1ea5e3e_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55088414772_d5bfbcd448_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55115524061_f5deb83710_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55114649552_d048b649db_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55115917945_3b198ecc24_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55115791579_7b96fee08a_b.jpg</image:loc>
+    </image:image>
+
+    <!-- PORTRAITS PHOTOS -->
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55120390181_2f12f7957e_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55120390166_1a4d13750e_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55120589493_8ae8c9067b_b.jpg</image:loc>
+    </image:image>
+
+    <!-- WILDLIFE PHOTOS -->
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/46851254025_6486f27e49_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/53818530458_5e433481dc_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/53818720960_871182abc7_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/52806590709_785bb8da41_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/52806736355_c3b392e892_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55115457136_05a5e306eb_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55115664778_b2b15315c6_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55115461246_b62a25a40d_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/55115664853_2b751d66fe_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/52806776068_638b499fd6_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/47625048481_805a9e2cf4_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/53818619109_1a5c4598d4_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/52806333761_b479d8e632_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/51092293502_e84d7bb237_b.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://live.staticflickr.com/65535/53818281121_2b33c96e72_b.jpg</image:loc>
+    </image:image>
+
   </url>
 </urlset>
